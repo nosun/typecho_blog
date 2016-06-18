@@ -1,43 +1,49 @@
-       <footer id="footer" class="main-content-wrap">
-
-
+<footer id="footer" class="main-content-wrap">
     <span class="copyrights">
- &copy; 2016 <?php $this->author() ?>'s /
- Power By <a  target="_blank"  href="http://typecho.org/">Typecho</a> 
-/ Designed By <a  target="_blank"  href="http://qqdie.com/">Jrotty</a>
-/ Loading time <?php timer_stop($this) ?>s
-/ <?php $this->options->tongji(); ?></span>
-</footer>
-
-            </div>
-
-
+         &copy; 2016 <?php $this->author() ?>'s
+        / Loading time <?php timer_stop($this) ?>s
+        / <?php $this->options->tongji(); ?>
+    </span>
+    </footer>
+</div>
 
 <?php if($this->is('post')||$this->is('page')): ?>
+<div id="bottom-bar" class="post-bottom-bar"
+    <?php if ($this->fields->fm){ ?>
+        data-behavior="3"
+    <?php }else{
+        if ($this->fields->ys){?>
+            data-behavior="<?php $this->fields->ys(); ?>"
+        <?php } else{ ?>
+            data-behavior="<?php $this->options->css(); ?>"
+        <?php }
+    };?>
+>
 
-
-    <div id="bottom-bar" class="post-bottom-bar" <?php if ($this->fields->fm){ ?>data-behavior="3"<?php }else{ ?>
- <?php if ($this->fields->ys){ ?>data-behavior="<?php $this->fields->ys(); ?>"<?php }else{ ?>
-
-data-behavior="<?php $this->options->css(); ?>"<?php };?><?php };?>>
-
-            
-            
-              
-                    <div class="post-actions-wrap">
+<div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
             <li class="post-action"> 
-              <?php thePrev($this); ?><i class="fa fa-angle-left"></i><span class="hide-xs hide-sm text-small icon-ml"><?php if ($this->options->cdl == '0'): ?>PREVIOUS  <?php endif; ?><?php if ($this->options->cdl == '1'): ?>前一篇<?php endif; ?></span></a>
-                
+              <?php thePrev($this); ?>
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">
+                    <?php if ($this->options->cdl == '0'): ?>PREVIOUS
+                    <?php endif; ?>
+
+                    <?php if ($this->options->cdl == '1'): ?>前一篇<?php endif; ?>
+                </span>
+                </a>
             </li>
- <li class="post-action">
+            <li class="post-action">
                 
-            <?php theNext($this); ?><span class="hide-xs hide-sm text-small icon-mr"><?php if ($this->options->cdl == '0'): ?>NEXT<?php endif; ?><?php if ($this->options->cdl == '1'): ?>后一篇<?php endif; ?></span>
-                    <i class="fa fa-angle-right"></i></a>
-                
-               
-              
+            <?php theNext($this); ?>
+                <span class="hide-xs hide-sm text-small icon-mr">
+                    <?php if ($this->options->cdl == '0'): ?>NEXT<?php endif; ?>
+
+                    <?php if ($this->options->cdl == '1'): ?>后一篇<?php endif; ?>
+                </span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
             </li>
         </ul>
     </nav>
@@ -47,33 +53,22 @@ data-behavior="<?php $this->options->css(); ?>"<?php };?><?php };?>>
                 <i class="fa fa-share-alt"></i>
             </a>
         </li>
-    <li class="post-action hide-xs">
-<a class="post-action-btn btn btn--default tooltip--top" target="new" data-tooltip="分享至QQ空间" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink() ?>&title=<?php $this->title() ?>&site=<?php $this->options->title(); ?>/&pics=<?php showThumbnail($this); ?>">
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default tooltip--top" target="new" data-tooltip="分享至QQ空间" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php $this->permalink() ?>&title=<?php $this->title() ?>&site=<?php $this->options->title(); ?>/&pics=<?php showThumbnail($this); ?>">
                 <i class="fa fa-qq"></i>
             </a>
-            
-        </li>
-        <li class="post-action hide-xs">
-           <a class="post-action-btn btn btn--default tooltip--top" target="new" data-tooltip="分享至人人网" href="http://widget.renren.com/dialog/share?resourceUrl=<?php $this->permalink() ?>/&srcUrl=<?php $this->permalink() ?>/&pic=<?php showThumbnail($this); ?>&title=<?php $this->title() ?>">
-                <i class="fa fa-renren"></i>
-            </a>
-        </li>
-       
-  
 
+        </li>
          <li class="post-action hide-xs">
             <a class="post-action-btn btn btn--default" target="new" data-tooltip="分享至新浪微博" href="http://service.weibo.com/share/share.php?url=<?php $this->permalink() ?>/&appkey=<?php $this->options->title(); ?>/&title=<?php $this->title() ?>&pic=<?php showThumbnail($this); ?>">
                 <i class="fa fa-weibo"></i>
             </a>
         </li>
-
-        
-            <li class="post-action">
-                <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                    <i class="fa fa-comment-o"></i>
-                </a>
-            </li>
-        
+        <li class="post-action">
+            <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                <i class="fa fa-comment-o"></i>
+            </a>
+        </li>
         <li class="post-action">
             
                 <a class="post-action-btn btn btn--default"  href="#" onclick="gotoTop();return false;">
@@ -83,25 +78,23 @@ data-behavior="<?php $this->options->css(); ?>"<?php };?><?php };?>>
         </li>
     </ul>
 </div>
+</div>
 
+ <div id="share-options-bar" class="share-options-bar"
+      <?php if ($this->fields->fm){ ?>data-behavior="3"<?php
+        }else{
+            if ($this->fields->ys){ ?>data-behavior="
+                <?php $this->fields->ys(); ?>"<?php
+            }else{
+        ?> data-behavior="<?php $this->options->css(); ?>"
+      <?php }};
+      ?>
+>
 
-                </div>
-
- <div id="share-options-bar" class="share-options-bar" <?php if ($this->fields->fm){ ?>data-behavior="3"<?php }else{ ?>
- <?php if ($this->fields->ys){ ?>data-behavior="<?php $this->fields->ys(); ?>"<?php }else{ ?>
-
-data-behavior="<?php $this->options->css(); ?>"<?php };?><?php };?>>
-
-                
     <ul class="share-options">
         <li class="share-option">
             <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?url=<?php $this->permalink() ?>/&appkey=<?php $this->options->title(); ?>/&title=<?php $this->title() ?>&pic=<?php showThumbnail($this); ?>">
                  <i class="fa fa-weibo"></i><span class="">Share on 新浪微博</span>
-            </a>
-        </li>
-        <li class="share-option">
-            <a class="share-option-btn" target="new" href="http://widget.renren.com/dialog/share?resourceUrl=<?php $this->permalink() ?>/&srcUrl=<?php $this->permalink() ?>/&pic=<?php showThumbnail($this); ?>&title=<?php $this->title() ?>">
-                <i class="fa fa-renren"></i><span>Share on 人人网</span>
             </a>
         </li>
         <li class="share-option">
