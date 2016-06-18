@@ -252,16 +252,6 @@ echo $random;
 
 
 
-
-
-
-
-
-
-
-
-
-
 function theNext($widget, $default = NULL)
 {
 $db = Typecho_Db::get();

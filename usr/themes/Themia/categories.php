@@ -28,9 +28,8 @@ data-behavior="<?php $this->options->css(); ?>">
  <nav id="sidebar"
 
 data-behavior="<?php $this->options->css(); ?>">
-
 <?php $this->need('sidebar.php'); ?>
-  
+</nav>
             <div id="main" data-behavior="<?php $this->options->css(); ?>"
                  class="
                         hasCoverMetaIn

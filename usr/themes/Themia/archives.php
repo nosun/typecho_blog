@@ -29,12 +29,11 @@ data-behavior="<?php $this->options->css(); ?>"<?php };?><?php };?>>
     
 </header>
 
- <nav id="sidebar" <?php if ($this->fields->fm){ ?>data-behavior="3"<?php }else{ ?>
+<nav id="sidebar" <?php if ($this->fields->fm){ ?>data-behavior="3"<?php }else{ ?>
  <?php if ($this->fields->ys){ ?>data-behavior="<?php $this->fields->ys(); ?>"<?php }else{ ?>
-
 data-behavior="<?php $this->options->css(); ?>"<?php };?><?php };?>>
-
 <?php $this->need('sidebar.php'); ?>
+</nav>
 <div id="main" data-behavior="<?php $this->options->css(); ?>"
                  class="
                         hasCoverMetaIn

@@ -24,9 +24,9 @@
 
 </header>
 
- <nav id="sidebar" data-behavior="<?php $this->options->css(); ?>">
-
-<?php $this->need('sidebar.php'); ?>
+<nav id="sidebar" data-behavior="<?php $this->options->css(); ?>">
+    <?php $this->need('sidebar.php'); ?>
+</nav>
 <div id="main" data-behavior="<?php $this->options->css(); ?>"
                  class="
                         hasCoverMetaIn
@@ -116,7 +116,7 @@ href="<?php $this->permalink() ?>"<?php };?>><?php $this->title() ?></a>
 <?php endif; ?>
 
   <?php if($this->user->hasLogin()):?>
-  <a href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid;?>" class="category-link"  target="_blank"><?php if ($this->options->cdl == '0'): ?>Edit<?php endif; ?><?php if ($this->options->cdl == '1'): ?>编辑<?php endif; ?></a>
+  <a href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid;?>" class="category-link"  target="_blank">编辑</a>
 <?php endif;?>
 
 </div>
@@ -133,8 +133,8 @@ p{
     margin: 0 0 0em;
 }
         </style>
-        <?php if ($this->options->cdl == '0'): ?><?php $this->content('Continue reading'); ?><?php endif; ?>
-        <?php if ($this->options->cdl == '1'): ?><?php $this->content('继续阅读'); ?><?php endif; ?>
+        <?php $this->content('继续阅读'); ?>
+
  <?php else: ?>
      <?php $this->excerpt(140, '...'); ?>
                 <?php endif; ?>       <?php endif; ?>
@@ -144,7 +144,7 @@ p{
 
                             <a  <?php if ($this->fields->l){ ?>href="<?php $this->fields->l(); ?>"  target="_blank"<?php }else{ ?>
 
-href="<?php $this->permalink() ?>"<?php };?> class="postShorten-excerpt_link link "><?php if ($this->options->cdl == '0'): ?>Continue reading<?php endif; ?><?php if ($this->options->cdl == '1'): ?>继续阅读<?php endif; ?></a>
+href="<?php $this->permalink() ?>"<?php };?> class="postShorten-excerpt_link link ">继续阅读</a>
 
 
  <?php endif; ?>
@@ -176,24 +176,22 @@ href="<?php $this->permalink() ?>"<?php };?> class="postShorten-excerpt_link lin
    <ul class="pagination">
 
         <li class="pagination-prev">
-    <?php if ($this->options->cdl == '0'): ?>
-            <?php $this->pageLink('<b class="btn btn--default btn--small">&nbsp;<i class="fa fa-angle-left text-base icon-mr"></i><span>Previous</span>&nbsp;  </b>','prev'); ?>
-<?php endif; ?><?php if ($this->options->cdl == '1'): ?> <?php $this->pageLink('<b class="btn btn--default btn--small">&nbsp;<i class="fa fa-angle-left text-base icon-mr"></i><span>上一页</span>&nbsp;  </b>','prev'); ?> <?php endif; ?>
 
-                </li>
-
+           <?php $this->pageLink
+           ('<b class="btn btn--default btn--small">&nbsp;<i class="fa fa-angle-left text-base icon-mr"></i>
+            <span>上一页</span>&nbsp;  </b>','prev');
+           ?>
+           </li>
         <li class="pagination-next">
-  <?php if ($this->options->cdl == '0'): ?>
-<?php $this->pageLink('<b class="btn btn--default btn--small">&nbsp;<span>Next</span><i class="fa fa-angle-right text-base icon-ml"></i>&nbsp;</b>','next'); ?>   <?php endif; ?> <?php if ($this->options->cdl == '1'): ?><?php $this->pageLink('<b class="btn btn--default btn--small">&nbsp;<span>下一页</span><i class="fa fa-angle-right text-base icon-ml"></i>&nbsp;</b>','next'); ?> <?php endif; ?>
+          <?php $this->pageLink('<b class="btn btn--default btn--small">&nbsp;<span>下一页
+        </span><i class="fa fa-angle-right text-base icon-ml"></i>&nbsp;</b>','next'); ?>
         </li>
 
 
  <li class="pagination-number">
 
-<?php if ($this->options->cdl == '0'): ?>page <?php endif; ?><?php if ($this->options->cdl == '1'): ?>第<?php endif; ?><?php if($this->_currentPage>1) echo $this->_currentPage;  else echo 1;?>
-
-
-<?php if ($this->options->cdl == '0'): ?>  of <?php endif; ?><?php if ($this->options->cdl == '1'): ?>页/共<?php endif; ?><?php echo   ceil($this->getTotal() / $this->parameter->pageSize); ?><?php if ($this->options->cdl == '1'): ?>页<?php endif; ?>
+第<?php if($this->_currentPage>1) echo $this->_currentPage;  else echo 1;?>
+页/共<?php echo   ceil($this->getTotal() / $this->parameter->pageSize); ?>页
 </li>
     </ul>
 </div>
